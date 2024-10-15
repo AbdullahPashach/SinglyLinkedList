@@ -186,7 +186,53 @@ public:
 		delete prev;
 		prev = nullptr;
 	}
+// Iterative C++ program to reverse a linked list
 
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int new_data) {
+        data = new_data;
+        next = nullptr;
+    }
+};
+
+// Given the head of a list, reverse the list and return the
+// head of reversed list
+Node* reverseList(Node* head) {
+    
+      // Initialize three pointers: curr, prev and next
+    Node *curr = head, *prev = nullptr, *next;
+
+      // Traverse all the nodes of Linked List
+    while (curr != nullptr) {
+      
+        // Store next
+        next = curr->next;
+      
+        // Reverse current node's next pointer
+        curr->next = prev;
+      
+        // Move pointers one position ahead
+        prev = curr;
+        curr = next;
+    }
+      
+      // Return the head of reversed linked list
+    return prev;
+}
+
+void printList(Node* node) {
+    while (node != nullptr) {
+        cout << " " << node->data;
+        node = node->next;
+    }
+}
 };
 int main()
 {
